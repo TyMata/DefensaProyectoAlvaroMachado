@@ -19,6 +19,19 @@ namespace Ucu.Poo.Defense
 
         private IList<PublicationItem> items = new List<PublicationItem>();
 
+        public int Total
+        {
+            get
+            {
+                int suma = 0;
+                foreach (PublicationItem item in Items)
+                {
+                    suma += item.Price * item.Quantity;
+                }
+                return suma;
+            }
+        }
+
         public Publication(DateTime endDate)
         {
             this.EndDate = endDate;
