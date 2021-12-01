@@ -2,7 +2,7 @@ using System;
 
 namespace Ucu.Poo.Defense
 {
-    public class PublicationDiscount
+    public class PublicationDiscount : IPublicationItem
     {
         private int amount;
 
@@ -14,13 +14,28 @@ namespace Ucu.Poo.Defense
             }
             set
             {
+                if(value > -1)
+                {
+                    throw new ArgumentException();
+                }
                 this.amount = value;
             }
         }
 
-        public PublicationDiscount(int amount)
+        public PublicationDiscount(int discount)
         {
-            this.SubTotal = amount;
+            if(discount > -1)
+            {
+                throw new ArgumentException();
+            }
+            this.amount = discount;
         }
+
+        public int ItemSubTotal()
+        {
+            return this.SubTotal;
+        }
+
+
     }
 }
